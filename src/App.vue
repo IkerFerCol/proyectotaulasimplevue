@@ -4,11 +4,44 @@ export default {
   data(){
     return {
       nom_web: "Lista de ciudades",
-      ciudades: []
+      ciudades: [
+        {
+          "id": 1,
+          "nom": "La Vall d'uixó",
+          "descripcion": "Ciudad la Vall",
+          "imagen": "imagen1.jpg",
+          "poblacion": 20000,
+          "franquicias": [],
+          "provincia_id": {
+            "id": 1,
+            "nom": "Castelló",
+            "pais_id": {
+              "id": 1,
+              "nom": "Espanya"
+            }
+          }
+        },
+        {
+          "id": 2,
+          "nom": "Fondeguilla",
+          "descripcion": "Ciudad Fondeguilla",
+          "imagen": "imagen2.jpg",
+          "poblacion": 5000,
+          "franquicias": [],
+          "provincia_id": {
+            "id": 1,
+            "nom": "Castelló",
+            "pais_id": {
+              "id": 1,
+              "nom": "Espanya"
+            }
+          }
+        }
+        ]
     }
   },
   mounted() {
-    axios.get("http://localhost:8082/ciudads").then(response => {
+    axios.get("http://localhost:8082/api/ciudades").then(response => {
       let ciudades = response.data.results;
        let result = [];
       for (let ciudad of ciudades){
